@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrape.it() - Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1a202c;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .nav__links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav__links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav__links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            margin: 40px 0 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Store Section */
+        .store-section {
+            margin-bottom: 50px;
+        }
+
+        .store-header {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            padding: 25px 40px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .store-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .store-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-image.no-image {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            color: #a0aec0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #2d3748;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 42px;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #744210;
+            font-size: 14px;
+        }
+
+        .rating-na {
+            background: #e2e8f0;
+            color: #718096;
+        }
+
+        /* No Results */
+        .no-results {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: #718096;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-results svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .nav__links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .store-header {
+                padding: 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="https://pypi.org/project/beautifulsoup4/" target="_blank">📦 Download Modules</a></li>
+                    <li><a href="http://127.0.0.1:5000/">🏠 Home</a></li>
+                    <li><a href="https://github.com/ShreevathsaGP/Projects_Stuff" target="_blank">💻 GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero fade-in">
+            <h1>Scrape.it()</h1>
+            <p>Compare prices across Amazon, Flipkart & jiomart</p>
+        </div>
+
+        <!-- Amazon Section -->
+        {% if amazon and amazon|length > 0 %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">A</div>
+                <h2>Amazon</h2>
+            </div>
+            <div class="products-grid">
+                {% for product in amazon %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{product[2]}}" alt="{{product[0]}}"
+                            onerror="this.parentElement.innerHTML='<div class=\'no-image\'>No Image</div>'">
+                    </div>
+                    <div class="product-name">{{product[0]}}</div>
+                    <div class="product-info">
+                        <div class="product-price">₹{{product[1]}}</div>
+                        <div class="product-rating {% if product[3] == 'N/A' %}rating-na{% endif %}">
+                            {{product[3]}} {% if product[3] != 'N/A' %}⭐{% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">A</div>
+                <h2>Amazon</h2>
+            </div>
+            <div class="no-results">
+                <p>No products found on Amazon</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Flipkart Section -->
+        {% if flipkart and flipkart|length > 0 %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">F</div>
+                <h2>Flipkart</h2>
+            </div>
+            <div class="products-grid">
+                {% for product in flipkart %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{product[2]}}" alt="{{product[0]}}"
+                            onerror="this.parentElement.innerHTML='<div class=\'no-image\'>No Image</div>'">
+                    </div>
+                    <div class="product-name">{{product[0]}}</div>
+                    <div class="product-info">
+                        <div class="product-price">₹{{product[1]}}</div>
+                        <div class="product-rating {% if product[3] == 'N/A' %}rating-na{% endif %}">
+                            {{product[3]}} {% if product[3] != 'N/A' %}⭐{% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">F</div>
+                <h2>Flipkart</h2>
+            </div>
+            <div class="no-results">
+                <p>No products found on Flipkart</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- jiomart Section -->
+        {% if jiomart and jiomart|length > 0 %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">S</div>
+                <h2>jiomart</h2>
+            </div>
+            <div class="products-grid">
+                {% for product in jiomart %}
+                <div class="product-card">
+                    <div class="product-image {% if not product[2] or product[2] == 'None' %}no-image{% endif %}">
+                        {% if product[2] and product[2] != 'None' %}
+                        <img src="{{product[2]}}" alt="{{product[0]}}"
+                            onerror="this.parentElement.classList.add('no-image'); this.remove(); this.parentElement.innerHTML='No Image'">
+                        {% else %}
+                        No Image
+                        {% endif %}
+                    </div>
+                    <div class="product-name">{{product[0]}}</div>
+                    <div class="product-info">
+                        <div class="product-price">₹{{product[1]}}</div>
+                        <div class="product-rating {% if product[3] == 'N/A' %}rating-na{% endif %}">
+                            {{product[3]}} {% if product[3] != 'N/A' %}⭐{% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="store-section fade-in">
+            <div class="store-header">
+                <div class="store-icon">S</div>
+                <h2>jiomart</h2>
+            </div>
+            <div class="no-results">
+                <p>No products found on jiomart</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <script>
+            // Add staggered fade-in animation
+            document.addEventListener('DOMContentLoaded', function () {
+                const sections = document.querySelectorAll('.fade-in');
+                sections.forEach((section, index) => {
+                    section.style.animationDelay = `${index * 0.1}s`;
+                });
+            });
+        </script>
+</body>
+
+</html>
