@@ -6,28 +6,29 @@
 
 ## 📘 Table of Contents
 
-1. [Overview](#-overview)  
-2. [Features](#-features)  
-3. [Tech Stack](#-tech-stack)  
-4. [Project Structure](#-project-structure)  
-5. [Installation](#-installation)  
-6. [Usage](#-usage)  
-7. [How It Works](#-how-it-works)  
-8. [Screenshots](#-screenshots)  
-9. [Known Issues](#-known-issues)  
-10. [Future Improvements](#-future-improvements)  
-11. [Author](#-author)  
+1. [Overview](#-overview)
+2. [Features](#-features)
+3. [Tech Stack](#-tech-stack)
+4. [Project Structure](#-project-structure)
+5. [Installation](#-installation)
+6. [Usage](#-usage)
+7. [How It Works](#-how-it-works)
+8. [Screenshots](#-screenshots)
+9. [Known Issues](#-known-issues)
+10. [Future Improvements](#-future-improvements)
+11. [Author](#-author)
 12. [License](#-license)
 
 ---
 
 ## 🔍 Overview
 
-**ScrapeIT** (also known as *PersonalProject2019*) is a lightweight Flask application that allows users to search for any product and instantly view the **product name**, **price**, and **image link** from the top three Indian e-commerce websites — **Amazon**, **Flipkart**, and **JioMart**.
+**ScrapeIT** (also known as _PersonalProject2019_) is a lightweight Flask application that allows users to search for any product and instantly view the **product name**, **price**, and **image link** from the top three Indian e-commerce websites — **Amazon**, **Flipkart**, and **JioMart**.
 
 It automates the tedious process of switching between sites, making online shopping faster and smarter.
 
 ---
+
 ## ✨ Features
 
 ✅ Search any product name once — get results from **three major platforms**  
@@ -35,19 +36,19 @@ It automates the tedious process of switching between sites, making online shopp
 ✅ Built with **Flask** and **BeautifulSoup4**  
 ✅ Simple and responsive frontend (HTML/CSS)  
 ✅ Fully local — no database or API required  
-✅ Modular scraping functions for easy extension  
+✅ Modular scraping functions for easy extension
 
 ---
 
 ## 🧰 Tech Stack
 
-| Layer | Technology |
-|-------|-------------|
-| **Backend** | Python, Flask |
-| **Scraping** | Requests, BeautifulSoup4 |
-| **Frontend** | HTML, CSS |
-| **Libraries Used** | `flask`, `requests`, `beautifulsoup4`, `tabulate`, `selenium` (optional) |
-| **Platform Support** | Amazon India, Flipkart, JioMart |
+| Layer                | Technology                                                               |
+| -------------------- | ------------------------------------------------------------------------ |
+| **Backend**          | Python, Flask                                                            |
+| **Scraping**         | Requests, BeautifulSoup4                                                 |
+| **Frontend**         | HTML, CSS                                                                |
+| **Libraries Used**   | `flask`, `requests`, `beautifulsoup4`, `tabulate`, `selenium` (optional) |
+| **Platform Support** | Amazon India, Flipkart, JioMart                                          |
 
 ---
 
@@ -73,12 +74,14 @@ ScrapeIT/
 ## ⚙️ Installation
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/gupta-ritik/ScrapeIT.git
 cd ScrapeIT
 ```
 
 ### 2. Create a Virtual Environment (Recommended)
+
 ```bash
 python -m venv venv
 # Activate it
@@ -89,21 +92,25 @@ source venv/bin/activate
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 > If `requirements.txt` is missing, install manually:
+
 ```bash
 pip install flask requests beautifulsoup4 tabulate selenium
 ```
 
 ### 4. Run the Application
+
 ```bash
 python main.py
 ```
 
 ### 5. Open in Browser
+
 Visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 You’ll see the search interface where you can type a product name.
@@ -115,9 +122,10 @@ You’ll see the search interface where you can type a product name.
 1. **User Input:**  
    The user enters a search query (e.g., “iPhone 14 Pro”) on the home page.
 
-2. **Scraping Process:**  
-   - Flask receives the request.  
-   - For each website (Amazon, Flipkart, JioMart), a separate scraping function runs.  
+2. **Scraping Process:**
+
+   - Flask receives the request.
+   - For each website (Amazon, Flipkart, JioMart), a separate scraping function runs.
    - These functions:
      - Construct the search URL
      - Fetch the HTML page via `requests`
@@ -138,41 +146,43 @@ You’ll see the search interface where you can type a product name.
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
+
 ![Home Page](git_images/home.png)
 
 ### 📊 Comparison Results
+
 ![Result Page](git_images/amazon.png)
 
-*(If the screenshots have different filenames, update the links above accordingly.)*
+_(If the screenshots have different filenames, update the links above accordingly.)_
 
 ---
 
 ## ⚠️ Known Issues
 
-- Websites may change their **HTML structure**, which can break the scraping logic.  
-- Some items might not appear due to **dynamic JS loading** or **CAPTCHA blocks**.  
-- Amazon / Flipkart may temporarily block frequent scraping requests.  
-- No data persistence — each search is re-scraped every time.  
+- Websites may change their **HTML structure**, which can break the scraping logic.
+- Some items might not appear due to **dynamic JS loading** or **CAPTCHA blocks**.
+- Amazon / Flipkart may temporarily block frequent scraping requests.
+- No data persistence — each search is re-scraped every time.
 
 ---
 
 ## 🚀 Future Improvements
 
-- ✅ Add database (SQLite / MongoDB) to cache recent searches  
-- ✅ Add more e-commerce sites (e.g., Myntra, eBay)  
-- ✅ Add asynchronous scraping for faster performance  
-- ✅ Integrate Selenium / Playwright for JS-rendered pages  
-- ✅ Add price-trend tracking over time  
-- ✅ Add user login to save favorite searches  
-- ✅ Add API endpoint for external integration  
+- ✅ Add database (SQLite / MongoDB) to cache recent searches
+- ✅ Add more e-commerce sites (e.g., Myntra, eBay)
+- ✅ Add asynchronous scraping for faster performance
+- ✅ Integrate Selenium / Playwright for JS-rendered pages
+- ✅ Add price-trend tracking over time
+- ✅ Add user login to save favorite searches
+- ✅ Add API endpoint for external integration
 
 ---
 
 ## 👨‍💻 Author
 
 **Ritik Gupta**  
-📧 [ritikgupta1807@gmail.com](mailto:ritiknitc@gmail.com)  
-🔗 [GitHub Profile](https://github.com/gupta-ritik)  
+📧 [ritiknitc@gmail.com](mailto:ritiknitc@gmail.com)  
+🔗 [GitHub Profile](https://github.com/gupta-ritik)
 
 ---
 
@@ -185,9 +195,10 @@ This project is open-source under the **MIT License** — feel free to use, modi
 ## ⭐ Support
 
 If you like this project:
-- 🌟 Star this repository  
-- 🍴 Fork it to make your own improvements  
-- 🐛 Submit an issue or PR if you find bugs  
+
+- 🌟 Star this repository
+- 🍴 Fork it to make your own improvements
+- 🐛 Submit an issue or PR if you find bugs
 
 ---
 
