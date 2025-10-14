@@ -28,7 +28,6 @@
 It automates the tedious process of switching between sites, making online shopping faster and smarter.
 
 ---
-
 ## ✨ Features
 
 ✅ Search any product name once — get results from **three major platforms**  
@@ -139,10 +138,10 @@ You’ll see the search interface where you can type a product name.
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
-![Home Page](git_images/homepage.png)
+![Home Page](git_images/home.png)
 
 ### 📊 Comparison Results
-![Result Page](git_images/resultpage.png)
+![Result Page](git_images/amazon.png)
 
 *(If the screenshots have different filenames, update the links above accordingly.)*
 
