@@ -1,6 +1,6 @@
 # 🕵️‍♂️ ScrapeIT
 
-**ScrapeIT** is a Python + Flask based **web scraping and price comparison tool** that helps users compare product prices across **Amazon**, **Flipkart**, and **Snapdeal** — all in one place.
+**ScrapeIT** is a Python + Flask based **web scraping and price comparison tool** that helps users compare product prices across **Amazon**, **Flipkart**, and **JioMart** — all in one place.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ## 🔍 Overview
 
-**ScrapeIT** (also known as *PersonalProject2019*) is a lightweight Flask application that allows users to search for any product and instantly view the **product name**, **price**, and **image link** from the top three Indian e-commerce websites — **Amazon**, **Flipkart**, and **Snapdeal**.
+**ScrapeIT** (also known as *PersonalProject2019*) is a lightweight Flask application that allows users to search for any product and instantly view the **product name**, **price**, and **image link** from the top three Indian e-commerce websites — **Amazon**, **Flipkart**, and **JioMart**.
 
 It automates the tedious process of switching between sites, making online shopping faster and smarter.
 
@@ -48,7 +48,7 @@ It automates the tedious process of switching between sites, making online shopp
 | **Scraping** | Requests, BeautifulSoup4 |
 | **Frontend** | HTML, CSS |
 | **Libraries Used** | `flask`, `requests`, `beautifulsoup4`, `tabulate`, `selenium` (optional) |
-| **Platform Support** | Amazon India, Flipkart, Snapdeal |
+| **Platform Support** | Amazon India, Flipkart, JioMart |
 
 ---
 
@@ -118,7 +118,7 @@ You’ll see the search interface where you can type a product name.
 
 2. **Scraping Process:**  
    - Flask receives the request.  
-   - For each website (Amazon, Flipkart, Snapdeal), a separate scraping function runs.  
+   - For each website (Amazon, Flipkart, JioMart), a separate scraping function runs.  
    - These functions:
      - Construct the search URL
      - Fetch the HTML page via `requests`
