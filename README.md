@@ -113,7 +113,7 @@ python main.py
 
 Visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-You’ll see the search interface where you can type a product name.
+
 
 ---
 
